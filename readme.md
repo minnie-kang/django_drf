@@ -24,7 +24,7 @@
 
 ## 프로젝트 구조
 
-spartamarket/
+spartamarket/   
 ├── accounts/         # 사용자 로그인 관련 앱   
 ├── products/         # 제품 관리 관련 앱   
 ├── static/           # 정적 파일 (CSS, JS, 이미지)   
