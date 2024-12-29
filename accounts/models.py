@@ -28,8 +28,8 @@ class User(AbstractUser):
         symmetrical=False,  # 대칭 관계가 아님 (단방향)
         related_name='followers',  # 역참조 이름
         through='Follow',  # 중간 테이블
+        blank= True
     )
-
 
 
     USERNAME_FIELD = 'email'    # 로그인 시 이메일 사용
