@@ -25,14 +25,14 @@
 ## 프로젝트 구조
 
 spartamarket/
-├── accounts/         # 사용자 로그인 관련 앱
-├── products/         # 제품 관리 관련 앱
-├── static/           # 정적 파일 (CSS, JS, 이미지)
-├── media/            # 사용자 업로드 파일
-├── templates/        # HTML 템플릿
-└── spartamarket/     # 프로젝트 설정
-    ├── settings.py   # 프로젝트 설정 파일
-    └── urls.py       # 메인 URL 설정
+├── accounts/         # 사용자 로그인 관련 앱   
+├── products/         # 제품 관리 관련 앱   
+├── static/           # 정적 파일 (CSS, JS, 이미지)   
+├── media/            # 사용자 업로드 파일   
+├── templates/        # HTML 템플릿   
+└── spartamarket/     # 프로젝트 설정   
+    ├── settings.py   # 프로젝트 설정 파일   
+    └── urls.py       # 메인 URL 설정   
 
 
 ## 개발 환경 설정
