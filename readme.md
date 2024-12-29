@@ -27,7 +27,6 @@
 spartamarket/   
 ├── accounts/         # 사용자 로그인 관련 앱   
 ├── products/         # 제품 관리 관련 앱   
-├── static/           # 정적 파일 (CSS, JS, 이미지)   
 ├── media/            # 사용자 업로드 파일   
 ├── templates/        # HTML 템플릿   
 └── spartamarket/     # 프로젝트 설정   
