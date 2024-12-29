@@ -76,27 +76,3 @@ def profile(request):
                 "user": serializer.data
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(["POST"])
-def follow(request, user_pk):
-    profile_user = get_object_or_404(User, pk=user_pk)
-    me = request.user
-    
-    if me == profile_user:
-        return Response({'error': '자기 자신을 팔로우할 수 없습니다.'}, 
-                      status=status.HTTP_400_BAD_REQUEST)
-    
-    if me.followings.filter(pk=profile_user.pk).exists():
-        me.followings.remove(profile_user)
-        is_followed = False
-        message = f'{profile_user.email}님 팔로우를 취소했습니다.'
-    else:
-        me.followings.add(profile_user)
-        is_followed = True
-        message = f'{profile_user.email}님을 팔로우했습니다.'
-
-    return Response({
-        'is_followed': is_followed,
-        'message': message,
-    }, status=status.HTTP_200_OK)

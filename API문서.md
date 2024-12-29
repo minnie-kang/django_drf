@@ -60,12 +60,6 @@
 - **Response**:
   - `200 OK`: 프로필 수정 성공
 
-### 팔로우/언팔로우
-- **URL**: `/accounts/<int:user_pk>/follow/`
-- **Method**: `POST`
-- **Headers**: `Authorization: Bearer <token>`
-- **Response**:
-  - `200 OK`: 팔로우/언팔로우 성공
 
 ## 제품 관리 API
 

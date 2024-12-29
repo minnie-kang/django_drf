@@ -22,16 +22,6 @@ class User(AbstractUser):
     username = models.CharField('닉네임', max_length=150)  # unique=True 제거
     profile_image = models.ImageField('프로필 이미지', upload_to='profile_images/', blank=True, null=True)
     
-    # ManyToManyField로 팔로우 기능 구현
-    followings = models.ManyToManyField(
-        'self',  # 자기 자신과의 관계
-        symmetrical=False,  # 대칭 관계가 아님 (단방향)
-        related_name='followers',  # 역참조 이름
-        through='Follow',  # 중간 테이블
-        blank= True
-    )
-
-
     USERNAME_FIELD = 'email'    # 로그인 시 이메일 사용
     REQUIRED_FIELDS = []        # email은 자동으로 필수
 
@@ -41,18 +31,3 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
     
-
-
-# 중간 테이블을 명시적으로 정의
-class Follow(models.Model):
-    follower = models.ForeignKey(
-        User, related_name='followed_users', on_delete=models.CASCADE)  # 팔로우를 하는 사용자
-    following = models.ForeignKey(
-        User, related_name='following_users', on_delete=models.CASCADE)  # 팔로우받는 사용자
-    created_at = models.DateTimeField(auto_now_add=True)  # 팔로우한 시간
-
-    class Meta:
-        unique_together = ('follower', 'following')  # 중복 팔로우 방지
-
-    def __str__(self):
-        return f"{self.follower} follows {self.following}"

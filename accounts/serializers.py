@@ -32,21 +32,11 @@ class SignupSerializer(serializers.ModelSerializer):
 #         fields = ['email', 'username', 'profile_image']  # 반환할 필드
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    
-    class FollowSerializer(serializers.ModelSerializer):
-        class Meta:
-            model = User
-            fields = ("id", "email", "username", "profile_image")
-
-    followers = FollowSerializer(many=True, read_only=True)
-    followings = FollowSerializer(many=True, read_only=True)
-    follower_count = serializers.IntegerField(source='followers.count', read_only=True)
-    following_count = serializers.IntegerField(source='followings.count', read_only=True)
     profile_image = serializers.SerializerMethodField()  # 커스텀 필드로 처리
     
     class Meta:
         model = User
-        fields = ['email', 'username', 'profile_image', 'followings', 'followers', 'follower_count', 'following_count']  # 반환할 필드
+        fields = ['email', 'username', 'profile_image']  # 반환할 필드에서 팔로우 관련 필드 삭제
         
     def get_profile_image(self, obj):
         request = self.context.get('request')  # Serializer context에서 request 가져오기
